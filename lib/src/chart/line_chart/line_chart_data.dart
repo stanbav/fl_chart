@@ -137,6 +137,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
     double? baselineY,
     FlClipData? clipData,
     Color? backgroundColor,
+    bool? centerAllX,
   }) =>
       LineChartData(
         lineBarsData: lineBarsData ?? this.lineBarsData,
@@ -157,6 +158,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
         baselineY: baselineY ?? this.baselineY,
         clipData: clipData ?? this.clipData,
         backgroundColor: backgroundColor ?? this.backgroundColor,
+        centerAllX: centerAllX ?? this.centerAllX,
       );
 
   /// Used for equality check, see [EquatableMixin].
