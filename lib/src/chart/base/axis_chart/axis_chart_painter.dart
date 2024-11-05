@@ -451,6 +451,9 @@ abstract class AxisChartPainter<D extends AxisChartData>
   double getPixelX(double spotX, Size viewSize, PaintHolder<D> holder) {
     final data = holder.data;
     final deltaX = data.maxX - data.minX;
+    if (holder.data.centerAllX) {
+      return viewSize.width / 2;
+    }
     if (deltaX == 0.0) {
       return 0;
     }

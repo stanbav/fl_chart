@@ -24,6 +24,7 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
     required this.minY,
     required this.maxY,
     double? baselineY,
+    bool? centerAllX,
     FlClipData? clipData,
     Color? backgroundColor,
     super.borderData,
@@ -33,6 +34,7 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
         rangeAnnotations = rangeAnnotations ?? const RangeAnnotations(),
         baselineX = baselineX ?? 0,
         baselineY = baselineY ?? 0,
+        centerAllX = centerAllX ?? false,
         clipData = clipData ?? const FlClipData.none(),
         backgroundColor = backgroundColor ?? Colors.transparent,
         extraLinesData = extraLinesData ?? const ExtraLinesData();
@@ -61,6 +63,8 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
 
   /// Extra horizontal or vertical lines to draw on the chart.
   final ExtraLinesData extraLinesData;
+
+  final bool centerAllX;
 
   /// Used for equality check, see [EquatableMixin].
   @override

@@ -88,6 +88,7 @@ abstract class FlTouchData<R extends BaseTouchResponse> with EquatableMixin {
     this.touchCallback,
     this.mouseCursorResolver,
     this.longPressDuration,
+    this.gestureRecognizersData,
   );
 
   /// You can disable or enable the touch system using [enabled] flag,
@@ -107,6 +108,8 @@ abstract class FlTouchData<R extends BaseTouchResponse> with EquatableMixin {
   /// default to 500 milliseconds refer to [kLongPressTimeout].
   final Duration? longPressDuration;
 
+  final FlGestureRecognizersData? gestureRecognizersData;
+
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
@@ -114,7 +117,30 @@ abstract class FlTouchData<R extends BaseTouchResponse> with EquatableMixin {
         touchCallback,
         mouseCursorResolver,
         longPressDuration,
+        gestureRecognizersData,
       ];
+}
+
+class FlGestureRecognizersData with EquatableMixin {
+  const FlGestureRecognizersData({
+    required this.panEnabled,
+    required this.tapEnabled,
+    required this.longPressEnabled,
+  });
+
+  const FlGestureRecognizersData.all()
+      : this(
+          panEnabled: true,
+          tapEnabled: true,
+          longPressEnabled: true,
+        );
+
+  final bool panEnabled;
+  final bool tapEnabled;
+  final bool longPressEnabled;
+
+  @override
+  List<Object?> get props => [panEnabled, tapEnabled, longPressEnabled];
 }
 
 /// Holds data to clipping chart around its borders.
