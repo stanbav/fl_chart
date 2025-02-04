@@ -1,5 +1,4 @@
 // coverage:ignore-file
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/services.dart';
 
@@ -16,24 +15,10 @@ abstract class FlTouchEvent {
 
   /// excludes exit or up events to show interactions on charts
   bool get isInterestedForInteractions {
-    final isLinux = defaultTargetPlatform == TargetPlatform.linux;
-    final isMacOS = defaultTargetPlatform == TargetPlatform.macOS;
-    final isWindows = defaultTargetPlatform == TargetPlatform.windows;
-
-    final isDesktopOrWeb = kIsWeb || isLinux || isMacOS || isWindows;
-
-    /// In desktop when mouse hovers into a chart element using [FlPointerHoverEvent], we show the interaction
-    /// and when tap happens at the same position, interaction will be dismissed because of [FlTapUpEvent].
-    /// That's why we exclude it on desktop or web
-    if (isDesktopOrWeb && this is FlTapUpEvent) {
-      return true;
-    }
-
     return this is! FlPanEndEvent &&
         this is! FlPanCancelEvent &&
         this is! FlPointerExitEvent &&
         this is! FlLongPressEnd &&
-        this is! FlTapUpEvent &&
         this is! FlTapCancelEvent;
   }
 }
