@@ -401,12 +401,14 @@ class RadarTouchData extends FlTouchData<RadarTouchResponse>
     MouseCursorResolver<RadarTouchResponse>? mouseCursorResolver,
     Duration? longPressDuration,
     double? touchSpotThreshold,
+    FlGestureRecognizersData? gestureRecognizersData,
   })  : touchSpotThreshold = touchSpotThreshold ?? 10,
         super(
           enabled ?? true,
           touchCallback,
           mouseCursorResolver,
           longPressDuration,
+          gestureRecognizersData,
         );
 
   /// we find the nearest spots on touched position based on this threshold

@@ -321,6 +321,7 @@ class ScatterTouchData extends FlTouchData<ScatterTouchResponse>
     ScatterTouchTooltipData? touchTooltipData,
     double? touchSpotThreshold,
     bool? handleBuiltInTouches,
+    FlGestureRecognizersData? gestureRecognizersData,
   })  : touchTooltipData = touchTooltipData ?? ScatterTouchTooltipData(),
         touchSpotThreshold = touchSpotThreshold ?? 0,
         handleBuiltInTouches = handleBuiltInTouches ?? true,
@@ -329,6 +330,7 @@ class ScatterTouchData extends FlTouchData<ScatterTouchResponse>
           touchCallback,
           mouseCursorResolver,
           longPressDuration,
+          gestureRecognizersData,
         );
 
   /// show a tooltip on touched spots

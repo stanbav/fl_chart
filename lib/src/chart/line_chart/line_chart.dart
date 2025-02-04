@@ -144,6 +144,12 @@ class _LineChartState extends AnimatedWidgetBaseState<LineChart> {
 
     setState(() {
       final sortedLineSpots = List.of(touchResponse.lineBarSpots!)
+          .where(
+            (element) =>
+                element.bar.color !=
+                Colors.transparent, // Trick to exclude transparent bars
+          )
+          .toList()
         ..sort((spot1, spot2) => spot2.y.compareTo(spot1.y));
 
       _showingTouchedIndicators.clear();

@@ -56,6 +56,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
     double? minY,
     double? maxY,
     super.baselineY,
+    super.centerAllX,
     super.clipData = const FlClipData.none(),
     super.backgroundColor,
     super.rotationQuarterTurns,
@@ -95,6 +96,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
         minY: lerpDouble(a.minY, b.minY, t),
         maxY: lerpDouble(a.maxY, b.maxY, t),
         baselineY: lerpDouble(a.baselineY, b.baselineY, t),
+        centerAllX: b.centerAllX,
         backgroundColor: Color.lerp(a.backgroundColor, b.backgroundColor, t),
         borderData: FlBorderData.lerp(a.borderData, b.borderData, t),
         clipData: b.clipData,
@@ -138,6 +140,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
     FlClipData? clipData,
     Color? backgroundColor,
     int? rotationQuarterTurns,
+    bool? centerAllX,
   }) =>
       LineChartData(
         lineBarsData: lineBarsData ?? this.lineBarsData,
@@ -159,6 +162,7 @@ class LineChartData extends AxisChartData with EquatableMixin {
         clipData: clipData ?? this.clipData,
         backgroundColor: backgroundColor ?? this.backgroundColor,
         rotationQuarterTurns: rotationQuarterTurns ?? this.rotationQuarterTurns,
+        centerAllX: centerAllX ?? this.centerAllX,
       );
 
   /// Used for equality check, see [EquatableMixin].
@@ -889,11 +893,13 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
     this.handleBuiltInTouches = true,
     this.getTouchLineStart = defaultGetTouchLineStart,
     this.getTouchLineEnd = defaultGetTouchLineEnd,
+    FlGestureRecognizersData? gestureRecognizersData,
   }) : super(
           enabled,
           touchCallback,
           mouseCursorResolver,
           longPressDuration,
+          gestureRecognizersData,
         );
 
   /// Configs of how touch tooltip popup.
@@ -934,6 +940,7 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
     GetTouchLineY? getTouchLineStart,
     GetTouchLineY? getTouchLineEnd,
     bool? handleBuiltInTouches,
+    FlGestureRecognizersData? gestureRecognizersData,
   }) =>
       LineTouchData(
         enabled: enabled ?? this.enabled,
@@ -948,6 +955,8 @@ class LineTouchData extends FlTouchData<LineTouchResponse> with EquatableMixin {
         getTouchLineStart: getTouchLineStart ?? this.getTouchLineStart,
         getTouchLineEnd: getTouchLineEnd ?? this.getTouchLineEnd,
         handleBuiltInTouches: handleBuiltInTouches ?? this.handleBuiltInTouches,
+        gestureRecognizersData:
+            gestureRecognizersData ?? this.gestureRecognizersData,
       );
 
   /// Used for equality check, see [EquatableMixin].

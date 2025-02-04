@@ -36,6 +36,7 @@ void main() {
         touchCallback,
         null,
         null,
+        null,
       );
     });
 
@@ -90,6 +91,7 @@ void main() {
               null,
               null,
               null,
+              null,
             ),
             canBeScaled: true,
             panGestureRecognizerOverride: panGestureRecognizer,
@@ -123,6 +125,7 @@ void main() {
           TestTouchData(
             false,
             callback,
+            null,
             null,
             null,
           ),
@@ -165,8 +168,8 @@ class TestRenderBaseChart extends RenderBaseChart<LineTouchResponse> {
   final LongPressGestureRecognizer longPressGestureRecognizerOverride;
 
   @override
-  void initGestureRecognizers() {
-    super.initGestureRecognizers();
+  void initGestureRecognizers(FlGestureRecognizersData? data) {
+    super.initGestureRecognizers(data);
     panGestureRecognizer = panGestureRecognizerOverride;
     tapGestureRecognizer = tapGestureRecognizerOverride;
     longPressGestureRecognizer = longPressGestureRecognizerOverride;
@@ -184,5 +187,6 @@ class TestTouchData extends FlTouchData<LineTouchResponse> {
     super.touchCallback,
     super.mouseCursorResolver,
     super.longPressDuration,
+    super.gestureRecognizersData,
   );
 }

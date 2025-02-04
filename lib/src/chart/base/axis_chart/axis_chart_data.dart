@@ -25,6 +25,7 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
     required this.minY,
     required this.maxY,
     double? baselineY,
+    bool? centerAllX,
     FlClipData? clipData,
     Color? backgroundColor,
     super.borderData,
@@ -35,6 +36,7 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
         rangeAnnotations = rangeAnnotations ?? const RangeAnnotations(),
         baselineX = baselineX ?? 0,
         baselineY = baselineY ?? 0,
+        centerAllX = centerAllX ?? false,
         clipData = clipData ?? const FlClipData.none(),
         backgroundColor = backgroundColor ?? Colors.transparent,
         extraLinesData = extraLinesData ?? const ExtraLinesData();
@@ -66,6 +68,8 @@ abstract class AxisChartData extends BaseChartData with EquatableMixin {
 
   /// Rotates the chart by 90 degrees clockwise in each turn
   final int rotationQuarterTurns;
+
+  final bool centerAllX;
 
   /// Used for equality check, see [EquatableMixin].
   @override
